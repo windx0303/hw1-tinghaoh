@@ -5,7 +5,7 @@
   <vendor/>
   <types>
     <typeDescription>
-      <name>Sentence</name>
+      <name>util.Sentence</name>
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -20,10 +20,15 @@
           <rangeTypeName>uima.cas.FSList</rangeTypeName>
           <elementType>NamedEntity</elementType>
         </featureDescription>
+        <featureDescription>
+          <name>text</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
-      <name>NamedEntity</name>
+      <name>util.NamedEntity</name>
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
@@ -32,17 +37,7 @@
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
-        <featureDescription>
-          <name>sentence</name>
-          <description/>
-          <rangeTypeName>Sentence</rangeTypeName>
-        </featureDescription>
       </features>
-    </typeDescription>
-    <typeDescription>
-      <name>Sentences</name>
-      <description>List of all sentences</description>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
     </typeDescription>
   </types>
 </typeSystemDescription>

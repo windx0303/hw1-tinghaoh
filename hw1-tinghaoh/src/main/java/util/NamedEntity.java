@@ -1,6 +1,7 @@
 
 
-/* First created by JCasGen Sun Oct 14 20:53:07 EDT 2012 */
+/* First created by JCasGen Mon Oct 15 20:07:09 EDT 2012 */
+package util;
 
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
@@ -10,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sun Oct 14 20:53:13 EDT 2012
- * XML source: C:/Documents and Settings/windx/git/hw1-tinghaoh/hw1-tinghaoh/typeSystem/hw1TypeSystem.xml
+ * Updated by JCasGen Mon Oct 15 20:07:09 EDT 2012
+ * XML source: C:/Documents and Settings/windx/git/hw1-tinghaoh/hw1-tinghaoh/src/main/resources/hw1TypeSystem.xml
  * @generated */
 public class NamedEntity extends Annotation {
   /** @generated
@@ -68,33 +69,15 @@ public class NamedEntity extends Annotation {
    * @generated */
   public String getNeType() {
     if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_neType == null)
-      jcasType.jcas.throwFeatMissing("neType", "NamedEntity");
+      jcasType.jcas.throwFeatMissing("neType", "util.NamedEntity");
     return jcasType.ll_cas.ll_getStringValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_neType);}
     
   /** setter for neType - sets  
    * @generated */
   public void setNeType(String v) {
     if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_neType == null)
-      jcasType.jcas.throwFeatMissing("neType", "NamedEntity");
+      jcasType.jcas.throwFeatMissing("neType", "util.NamedEntity");
     jcasType.ll_cas.ll_setStringValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_neType, v);}    
-   
-    
-  //*--------------*
-  //* Feature: sentence
-
-  /** getter for sentence - gets 
-   * @generated */
-  public Sentence getSentence() {
-    if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_sentence == null)
-      jcasType.jcas.throwFeatMissing("sentence", "NamedEntity");
-    return (Sentence)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_sentence)));}
-    
-  /** setter for sentence - sets  
-   * @generated */
-  public void setSentence(Sentence v) {
-    if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_sentence == null)
-      jcasType.jcas.throwFeatMissing("sentence", "NamedEntity");
-    jcasType.ll_cas.ll_setRefValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_sentence, jcasType.ll_cas.ll_getFSRef(v));}    
   }
 
     

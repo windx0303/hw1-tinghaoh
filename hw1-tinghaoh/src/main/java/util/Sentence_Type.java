@@ -1,5 +1,6 @@
 
-/* First created by JCasGen Sun Oct 14 20:53:07 EDT 2012 */
+/* First created by JCasGen Mon Oct 15 20:07:09 EDT 2012 */
+package util;
 
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
@@ -13,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sun Oct 14 20:53:13 EDT 2012
+ * Updated by JCasGen Mon Oct 15 20:07:09 EDT 2012
  * @generated */
 public class Sentence_Type extends Annotation_Type {
   /** @generated */
@@ -41,7 +42,7 @@ public class Sentence_Type extends Annotation_Type {
   /** @generated 
      @modifiable */
   @SuppressWarnings ("hiding")
-  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("Sentence");
+  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("util.Sentence");
  
   /** @generated */
   final Feature casFeat_sentId;
@@ -50,13 +51,13 @@ public class Sentence_Type extends Annotation_Type {
   /** @generated */ 
   public String getSentId(int addr) {
         if (featOkTst && casFeat_sentId == null)
-      jcas.throwFeatMissing("sentId", "Sentence");
+      jcas.throwFeatMissing("sentId", "util.Sentence");
     return ll_cas.ll_getStringValue(addr, casFeatCode_sentId);
   }
   /** @generated */    
   public void setSentId(int addr, String v) {
         if (featOkTst && casFeat_sentId == null)
-      jcas.throwFeatMissing("sentId", "Sentence");
+      jcas.throwFeatMissing("sentId", "util.Sentence");
     ll_cas.ll_setStringValue(addr, casFeatCode_sentId, v);}
     
   
@@ -68,14 +69,32 @@ public class Sentence_Type extends Annotation_Type {
   /** @generated */ 
   public int getNeList(int addr) {
         if (featOkTst && casFeat_neList == null)
-      jcas.throwFeatMissing("neList", "Sentence");
+      jcas.throwFeatMissing("neList", "util.Sentence");
     return ll_cas.ll_getRefValue(addr, casFeatCode_neList);
   }
   /** @generated */    
   public void setNeList(int addr, int v) {
         if (featOkTst && casFeat_neList == null)
-      jcas.throwFeatMissing("neList", "Sentence");
+      jcas.throwFeatMissing("neList", "util.Sentence");
     ll_cas.ll_setRefValue(addr, casFeatCode_neList, v);}
+    
+  
+ 
+  /** @generated */
+  final Feature casFeat_text;
+  /** @generated */
+  final int     casFeatCode_text;
+  /** @generated */ 
+  public String getText(int addr) {
+        if (featOkTst && casFeat_text == null)
+      jcas.throwFeatMissing("text", "util.Sentence");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_text);
+  }
+  /** @generated */    
+  public void setText(int addr, String v) {
+        if (featOkTst && casFeat_text == null)
+      jcas.throwFeatMissing("text", "util.Sentence");
+    ll_cas.ll_setStringValue(addr, casFeatCode_text, v);}
     
   
 
@@ -94,6 +113,10 @@ public class Sentence_Type extends Annotation_Type {
  
     casFeat_neList = jcas.getRequiredFeatureDE(casType, "neList", "uima.cas.FSList", featOkTst);
     casFeatCode_neList  = (null == casFeat_neList) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_neList).getCode();
+
+ 
+    casFeat_text = jcas.getRequiredFeatureDE(casType, "text", "uima.cas.String", featOkTst);
+    casFeatCode_text  = (null == casFeat_text) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_text).getCode();
 
   }
 }

@@ -1,6 +1,7 @@
 
 
-/* First created by JCasGen Sun Oct 14 20:53:07 EDT 2012 */
+/* First created by JCasGen Mon Oct 15 20:07:09 EDT 2012 */
+package util;
 
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
@@ -11,8 +12,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sun Oct 14 20:53:13 EDT 2012
- * XML source: C:/Documents and Settings/windx/git/hw1-tinghaoh/hw1-tinghaoh/typeSystem/hw1TypeSystem.xml
+ * Updated by JCasGen Mon Oct 15 20:07:09 EDT 2012
+ * XML source: C:/Documents and Settings/windx/git/hw1-tinghaoh/hw1-tinghaoh/src/main/resources/hw1TypeSystem.xml
  * @generated */
 public class Sentence extends Annotation {
   /** @generated
@@ -69,14 +70,14 @@ public class Sentence extends Annotation {
    * @generated */
   public String getSentId() {
     if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_sentId == null)
-      jcasType.jcas.throwFeatMissing("sentId", "Sentence");
+      jcasType.jcas.throwFeatMissing("sentId", "util.Sentence");
     return jcasType.ll_cas.ll_getStringValue(addr, ((Sentence_Type)jcasType).casFeatCode_sentId);}
     
   /** setter for sentId - sets  
    * @generated */
   public void setSentId(String v) {
     if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_sentId == null)
-      jcasType.jcas.throwFeatMissing("sentId", "Sentence");
+      jcasType.jcas.throwFeatMissing("sentId", "util.Sentence");
     jcasType.ll_cas.ll_setStringValue(addr, ((Sentence_Type)jcasType).casFeatCode_sentId, v);}    
    
     
@@ -87,15 +88,33 @@ public class Sentence extends Annotation {
    * @generated */
   public FSList getNeList() {
     if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_neList == null)
-      jcasType.jcas.throwFeatMissing("neList", "Sentence");
+      jcasType.jcas.throwFeatMissing("neList", "util.Sentence");
     return (FSList)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Sentence_Type)jcasType).casFeatCode_neList)));}
     
   /** setter for neList - sets  
    * @generated */
   public void setNeList(FSList v) {
     if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_neList == null)
-      jcasType.jcas.throwFeatMissing("neList", "Sentence");
+      jcasType.jcas.throwFeatMissing("neList", "util.Sentence");
     jcasType.ll_cas.ll_setRefValue(addr, ((Sentence_Type)jcasType).casFeatCode_neList, jcasType.ll_cas.ll_getFSRef(v));}    
+   
+    
+  //*--------------*
+  //* Feature: text
+
+  /** getter for text - gets 
+   * @generated */
+  public String getText() {
+    if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_text == null)
+      jcasType.jcas.throwFeatMissing("text", "util.Sentence");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Sentence_Type)jcasType).casFeatCode_text);}
+    
+  /** setter for text - sets  
+   * @generated */
+  public void setText(String v) {
+    if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_text == null)
+      jcasType.jcas.throwFeatMissing("text", "util.Sentence");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Sentence_Type)jcasType).casFeatCode_text, v);}    
   }
 
     
