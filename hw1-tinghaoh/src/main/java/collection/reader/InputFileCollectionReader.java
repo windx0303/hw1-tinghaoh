@@ -21,6 +21,7 @@ public class InputFileCollectionReader extends CollectionReader_ImplBase {
 	private File inputFile;
 	   
 	public void initialize() throws ResourceInitializationException {
+		
 		inputFile = new File(((String)getConfigParameterValue("inputFile")).trim());
 		lineBuffer = "";
 		try {

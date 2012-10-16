@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Tue Oct 16 15:53:39 EDT 2012
+ * Updated by JCasGen Tue Oct 16 17:06:01 EDT 2012
  * XML source: C:/Documents and Settings/windx/git/hw1-tinghaoh/hw1-tinghaoh/src/main/resources/descriptor/OutputWriter.xml
  * @generated */
 public class NamedEntity extends Annotation {
@@ -96,6 +96,24 @@ public class NamedEntity extends Annotation {
     if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_text == null)
       jcasType.jcas.throwFeatMissing("text", "util.NamedEntity");
     jcasType.ll_cas.ll_setStringValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_text, v);}    
+   
+    
+  //*--------------*
+  //* Feature: sentId
+
+  /** getter for sentId - gets 
+   * @generated */
+  public String getSentId() {
+    if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_sentId == null)
+      jcasType.jcas.throwFeatMissing("sentId", "util.NamedEntity");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_sentId);}
+    
+  /** setter for sentId - sets  
+   * @generated */
+  public void setSentId(String v) {
+    if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_sentId == null)
+      jcasType.jcas.throwFeatMissing("sentId", "util.NamedEntity");
+    jcasType.ll_cas.ll_setStringValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_sentId, v);}    
   }
 
     

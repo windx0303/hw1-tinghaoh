@@ -27,7 +27,7 @@ public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 				Sentence nowSent = (Sentence) sentIter.next();
 				String nowText = nowSent.getText();
 				Map<Integer, Integer> result = nowTagger.getGeneSpans(nowText);
-				annotateNamedEntity(result, nowJCas);
+				annotateNamedEntity(result, nowJCas, nowSent.getSentId());
 			}
 		} catch (ResourceInitializationException e) {
 			// TODO Auto-generated catch block
@@ -36,7 +36,7 @@ public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 
 	}
 	
-	private void annotateNamedEntity(Map<Integer, Integer> spanMap, JCas nowJCas){
+	private void annotateNamedEntity(Map<Integer, Integer> spanMap, JCas nowJCas, String sentId){
 		
 		for(Map.Entry<Integer, Integer> entry : spanMap.entrySet()){
 			
@@ -45,6 +45,7 @@ public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 			
 			NamedEntity nowNE = new NamedEntity(nowJCas, nowBeginIndex, nowEndIndex);
 			nowNE.setText(nowJCas.getDocumentText().substring(nowBeginIndex, nowEndIndex));
+			nowNE.setSentId(sentId);
 			nowNE.addToIndexes();
 			
 		}
