@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Mon Oct 15 20:07:09 EDT 2012 */
+/* First created by JCasGen Tue Oct 16 09:18:23 EDT 2012 */
 package util;
 
 import org.apache.uima.jcas.JCas; 
@@ -12,8 +12,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Mon Oct 15 20:07:09 EDT 2012
- * XML source: C:/Documents and Settings/windx/git/hw1-tinghaoh/hw1-tinghaoh/src/main/resources/hw1TypeSystem.xml
+ * Updated by JCasGen Tue Oct 16 15:53:39 EDT 2012
+ * XML source: C:/Documents and Settings/windx/git/hw1-tinghaoh/hw1-tinghaoh/src/main/resources/descriptor/OutputWriter.xml
  * @generated */
 public class Sentence extends Annotation {
   /** @generated
@@ -79,24 +79,6 @@ public class Sentence extends Annotation {
     if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_sentId == null)
       jcasType.jcas.throwFeatMissing("sentId", "util.Sentence");
     jcasType.ll_cas.ll_setStringValue(addr, ((Sentence_Type)jcasType).casFeatCode_sentId, v);}    
-   
-    
-  //*--------------*
-  //* Feature: neList
-
-  /** getter for neList - gets 
-   * @generated */
-  public FSList getNeList() {
-    if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_neList == null)
-      jcasType.jcas.throwFeatMissing("neList", "util.Sentence");
-    return (FSList)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Sentence_Type)jcasType).casFeatCode_neList)));}
-    
-  /** setter for neList - sets  
-   * @generated */
-  public void setNeList(FSList v) {
-    if (Sentence_Type.featOkTst && ((Sentence_Type)jcasType).casFeat_neList == null)
-      jcasType.jcas.throwFeatMissing("neList", "util.Sentence");
-    jcasType.ll_cas.ll_setRefValue(addr, ((Sentence_Type)jcasType).casFeatCode_neList, jcasType.ll_cas.ll_getFSRef(v));}    
    
     
   //*--------------*

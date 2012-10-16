@@ -9,6 +9,7 @@ public class OutputWriter extends CasConsumer_ImplBase {
 	@Override
 	public void processCas(CAS aCAS) throws ResourceProcessException {
 		// TODO Auto-generated method stub
+		
 
 	}
 

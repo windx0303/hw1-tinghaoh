@@ -15,12 +15,6 @@
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
-          <name>neList</name>
-          <description/>
-          <rangeTypeName>uima.cas.FSList</rangeTypeName>
-          <elementType>NamedEntity</elementType>
-        </featureDescription>
-        <featureDescription>
           <name>text</name>
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
@@ -34,6 +28,11 @@
       <features>
         <featureDescription>
           <name>neType</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>text</name>
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>

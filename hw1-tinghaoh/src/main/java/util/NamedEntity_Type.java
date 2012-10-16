@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Mon Oct 15 20:07:09 EDT 2012 */
+/* First created by JCasGen Tue Oct 16 09:18:23 EDT 2012 */
 package util;
 
 import org.apache.uima.jcas.JCas;
@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Mon Oct 15 20:07:09 EDT 2012
+ * Updated by JCasGen Tue Oct 16 15:53:39 EDT 2012
  * @generated */
 public class NamedEntity_Type extends Annotation_Type {
   /** @generated */
@@ -61,6 +61,24 @@ public class NamedEntity_Type extends Annotation_Type {
     ll_cas.ll_setStringValue(addr, casFeatCode_neType, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_text;
+  /** @generated */
+  final int     casFeatCode_text;
+  /** @generated */ 
+  public String getText(int addr) {
+        if (featOkTst && casFeat_text == null)
+      jcas.throwFeatMissing("text", "util.NamedEntity");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_text);
+  }
+  /** @generated */    
+  public void setText(int addr, String v) {
+        if (featOkTst && casFeat_text == null)
+      jcas.throwFeatMissing("text", "util.NamedEntity");
+    ll_cas.ll_setStringValue(addr, casFeatCode_text, v);}
+    
+  
 
 
 
@@ -73,6 +91,10 @@ public class NamedEntity_Type extends Annotation_Type {
  
     casFeat_neType = jcas.getRequiredFeatureDE(casType, "neType", "uima.cas.String", featOkTst);
     casFeatCode_neType  = (null == casFeat_neType) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_neType).getCode();
+
+ 
+    casFeat_text = jcas.getRequiredFeatureDE(casType, "text", "uima.cas.String", featOkTst);
+    casFeatCode_text  = (null == casFeat_text) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_text).getCode();
 
   }
 }

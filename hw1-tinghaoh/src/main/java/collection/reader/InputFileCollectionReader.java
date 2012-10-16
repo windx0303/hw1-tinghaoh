@@ -34,7 +34,6 @@ public class InputFileCollectionReader extends CollectionReader_ImplBase {
 		}
 	}
 	
-	
 	@Override
 	public void getNext(CAS aCAS) throws IOException, CollectionException {
 		
@@ -50,6 +49,8 @@ public class InputFileCollectionReader extends CollectionReader_ImplBase {
 		int splitIndex = lineBuffer.indexOf(" ");
 		String nowId = lineBuffer.substring(0, splitIndex);
 		String nowText = lineBuffer.substring(splitIndex+1).trim();
+		
+		jcas.setDocumentText(nowText);
 		
 		Sentence nowSent = new Sentence(jcas, 0, nowText.length());
 		nowSent.setSentId(nowId);
@@ -76,7 +77,7 @@ public class InputFileCollectionReader extends CollectionReader_ImplBase {
 	@Override
 	public void close() throws IOException {
 		// TODO Auto-generated method stub
-
+		in.close();
 	}
 
 }

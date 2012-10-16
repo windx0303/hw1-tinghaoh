@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Mon Oct 15 20:07:09 EDT 2012 */
+/* First created by JCasGen Tue Oct 16 09:18:23 EDT 2012 */
 package util;
 
 import org.apache.uima.jcas.JCas;
@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Mon Oct 15 20:07:09 EDT 2012
+ * Updated by JCasGen Tue Oct 16 15:53:39 EDT 2012
  * @generated */
 public class Sentence_Type extends Annotation_Type {
   /** @generated */
@@ -63,24 +63,6 @@ public class Sentence_Type extends Annotation_Type {
   
  
   /** @generated */
-  final Feature casFeat_neList;
-  /** @generated */
-  final int     casFeatCode_neList;
-  /** @generated */ 
-  public int getNeList(int addr) {
-        if (featOkTst && casFeat_neList == null)
-      jcas.throwFeatMissing("neList", "util.Sentence");
-    return ll_cas.ll_getRefValue(addr, casFeatCode_neList);
-  }
-  /** @generated */    
-  public void setNeList(int addr, int v) {
-        if (featOkTst && casFeat_neList == null)
-      jcas.throwFeatMissing("neList", "util.Sentence");
-    ll_cas.ll_setRefValue(addr, casFeatCode_neList, v);}
-    
-  
- 
-  /** @generated */
   final Feature casFeat_text;
   /** @generated */
   final int     casFeatCode_text;
@@ -109,10 +91,6 @@ public class Sentence_Type extends Annotation_Type {
  
     casFeat_sentId = jcas.getRequiredFeatureDE(casType, "sentId", "uima.cas.String", featOkTst);
     casFeatCode_sentId  = (null == casFeat_sentId) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_sentId).getCode();
-
- 
-    casFeat_neList = jcas.getRequiredFeatureDE(casType, "neList", "uima.cas.FSList", featOkTst);
-    casFeatCode_neList  = (null == casFeat_neList) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_neList).getCode();
 
  
     casFeat_text = jcas.getRequiredFeatureDE(casType, "text", "uima.cas.String", featOkTst);

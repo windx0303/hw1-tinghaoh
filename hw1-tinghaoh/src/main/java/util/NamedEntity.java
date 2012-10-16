@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Mon Oct 15 20:07:09 EDT 2012 */
+/* First created by JCasGen Tue Oct 16 09:18:23 EDT 2012 */
 package util;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Mon Oct 15 20:07:09 EDT 2012
- * XML source: C:/Documents and Settings/windx/git/hw1-tinghaoh/hw1-tinghaoh/src/main/resources/hw1TypeSystem.xml
+ * Updated by JCasGen Tue Oct 16 15:53:39 EDT 2012
+ * XML source: C:/Documents and Settings/windx/git/hw1-tinghaoh/hw1-tinghaoh/src/main/resources/descriptor/OutputWriter.xml
  * @generated */
 public class NamedEntity extends Annotation {
   /** @generated
@@ -78,6 +78,24 @@ public class NamedEntity extends Annotation {
     if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_neType == null)
       jcasType.jcas.throwFeatMissing("neType", "util.NamedEntity");
     jcasType.ll_cas.ll_setStringValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_neType, v);}    
+   
+    
+  //*--------------*
+  //* Feature: text
+
+  /** getter for text - gets 
+   * @generated */
+  public String getText() {
+    if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_text == null)
+      jcasType.jcas.throwFeatMissing("text", "util.NamedEntity");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_text);}
+    
+  /** setter for text - sets  
+   * @generated */
+  public void setText(String v) {
+    if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_text == null)
+      jcasType.jcas.throwFeatMissing("text", "util.NamedEntity");
+    jcasType.ll_cas.ll_setStringValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_text, v);}    
   }
 
     
