@@ -25,7 +25,7 @@ public class OutputWriter extends CasConsumer_ImplBase {
 	public void initialize() throws ResourceInitializationException {
 		outputFile = new File(((String)getConfigParameterValue("outputFile")).trim());
 		try {
-			fOut = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile, true), encoding));
+			fOut = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile, false), encoding));
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
