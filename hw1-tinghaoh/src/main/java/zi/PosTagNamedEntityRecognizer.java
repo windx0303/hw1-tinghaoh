@@ -7,9 +7,13 @@ import java.util.Properties;
 
 import org.apache.uima.resource.ResourceInitializationException;
 
+import de.julielab.jnet.tagger.Unit;
+
 import edu.stanford.nlp.ling.CoreAnnotations.PartOfSpeechAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TokensAnnotation;
+import edu.stanford.nlp.ling.CoreAnnotations.ValueAnnotation;
+import edu.stanford.nlp.ling.CoreAnnotations.WordFormAnnotation;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -25,6 +29,21 @@ public class PosTagNamedEntityRecognizer {
     pipeline = new StanfordCoreNLP(props);
   }
 
+  public ArrayList<Unit> getTokeList(String nowSent){
+	  
+	  ArrayList<Unit> result = new ArrayList<Unit>();
+	  Annotation nowSentAnnotation = new Annotation(nowSent);
+	  pipeline.annotate(nowSentAnnotation);
+	  for (CoreLabel token : nowSentAnnotation.get(TokensAnnotation.class)) {
+		  String nowLabel = "X";
+	      String nowWord = token.get(ValueAnnotation.class);
+	      Unit nowUnit = new Unit(token.beginPosition(), token.endPosition(), nowWord, nowLabel);
+	      result.add(nowUnit);
+	  }
+	  return result;
+	  
+  }
+  
   public Map<Integer, Integer> getGeneSpans(String text) {
     Map<Integer, Integer> begin2end = new HashMap<Integer, Integer>();
     Annotation document = new Annotation(text);

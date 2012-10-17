@@ -1,6 +1,10 @@
 package cas.consumer;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -12,6 +16,9 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JFSIndexRepository;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
+import org.apache.uima.util.ProcessTrace;
+
+import com.aliasi.chunk.Chunk;
 
 import util.*;
 
@@ -21,9 +28,11 @@ public class OutputWriter extends CasConsumer_ImplBase {
 	
 	private File outputFile;
 	private BufferedWriter fOut;
+	private Hashtable<Integer, Integer> indexMap;
 	   
 	public void initialize() throws ResourceInitializationException {
 		outputFile = new File(((String)getConfigParameterValue("outputFile")).trim());
+		indexMap = new Hashtable<Integer, Integer>();
 		try {
 			fOut = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile, false), encoding));
 		} catch (UnsupportedEncodingException e) {
@@ -41,46 +50,87 @@ public class OutputWriter extends CasConsumer_ImplBase {
 		
 		JCas jcas;
 		try {
+			
+			ArrayList<NamedEntity> result = new ArrayList<NamedEntity>();
+			
 			jcas = aCAS.getJCas();
+			
+			indexMap = buildIndexMap(jcas);
+			
 			JFSIndexRepository idx = jcas.getJFSIndexRepository();
 			AnnotationIndex neAnnotIndex = idx.getAnnotationIndex(NamedEntity.typeIndexID);
 			FSIterator neIter = neAnnotIndex.iterator();
+			
 			while(neIter.hasNext()){
+				
 				NamedEntity nowNE = (NamedEntity) neIter.next();
-				try {
+				
+				if(!containsNE(nowNE, result)){
+					result.add(nowNE);
 					fOut.write(nowNE.getSentId());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					fOut.write("|");
+					int outputBegin = indexMap.get(nowNE.getBegin());
+					fOut.write(Integer.toString(outputBegin));
+					fOut.write(" ");
+					int outputEnd = indexMap.get(nowNE.getEnd()-1);
+					fOut.write(Integer.toString(outputEnd));
+					fOut.write("|");
+					fOut.write(nowNE.getText());
+					fOut.newLine();
 				}
-				fOut.write("|");
-				fOut.write(Integer.toString(nowNE.getBegin()));
-				fOut.write(" ");
-				fOut.write(Integer.toString(nowNE.getEnd()));
-				fOut.write("|");
-				fOut.write(nowNE.getText());
-				fOut.newLine();
+				
 			}
+			
+			result.clear();
+			
 		} catch (CASException e) {
-			try {
-				throw new CollectionException(e);
-			} catch (CollectionException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			e.printStackTrace();
 		} catch (IOException e) {
-			try {
-				throw new IOException(e);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			e.printStackTrace();
 		}
 		
 	}
 	
-	public void finalize() throws IOException {
-		fOut.close();
+	/*
+	 * Return true if the NamedEntity list contains the same input NamedEntity
+	 * If one NamedEntity's span has overlap with the other, we consider they're different  
+	 */
+	private boolean containsNE(NamedEntity nowNE, ArrayList<NamedEntity> result){
+		for(int i=0;i<result.size();i++){
+			NamedEntity nowResult = result.get(i);
+			int resultBegin = nowResult.getBegin();
+			int resultEnd = nowResult.getEnd();
+			if(nowNE.getBegin()==resultBegin&&nowNE.getEnd()==resultEnd){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private Hashtable<Integer, Integer> buildIndexMap(JCas jcas){
+		Hashtable<Integer, Integer> result = new Hashtable<Integer, Integer>();
+		String nowText = jcas.getDocumentText();
+		Pattern spaceMatcher = Pattern.compile("[\\s]+");
+		int outputIndex = 0;
+		for(int i=0;i<nowText.length();i++){
+			result.put(new Integer(i), new Integer(outputIndex));
+			if(!spaceMatcher.matcher(nowText.substring(i, i+1)).matches()){//not a space
+				outputIndex++;
+			}
+		}
+		return result;
+	}
+	
+	public void collectionProcessComplete(ProcessTrace aTrace)
+            throws ResourceProcessException,
+                   IOException{
+		try {
+			System.out.println("write over");
+			fOut.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

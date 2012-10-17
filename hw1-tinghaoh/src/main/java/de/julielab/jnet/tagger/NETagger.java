@@ -36,6 +36,9 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 import de.julielab.jnet.evaluation.IOEvaluation;
+import de.julielab.jnet.tagger.JNETException;
+import de.julielab.jnet.tagger.Sentence;
+import de.julielab.jnet.tagger.Unit;
 import de.julielab.jnet.utils.Utils;
 import edu.umass.cs.mallet.base.fst.CRF4;
 import edu.umass.cs.mallet.base.fst.MultiSegmentationEvaluator;
@@ -77,7 +80,9 @@ public class NETagger {
 		this();
 		// reading the feature configuration out of the textfile
 		try {
+			//System.out.println("before");
 			featureConfig.load(new FileInputStream(featureConfigFile));
+			//System.out.println("after");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -172,6 +177,37 @@ public class NETagger {
 
 	}
 
+	public ArrayList<Unit> getIOBList(Sentence sentence) throws JNETException {
+
+		/*System.out.println("  * predicting with crf model...");
+		if(model==null){
+			System.out.println("model lol");
+		}*/
+		Pipe myPipe = model.getInputPipe();
+
+		//ArrayList<Unit> iobList = new ArrayList<String>();
+		
+		Instance inst = new Instance(sentence, "", "", "", myPipe);
+		Sequence input = (Sequence) inst.getData();
+		Sequence output = model.viterbiPath(input).output();
+
+		ArrayList<Unit> units = sentence.getUnits();
+
+		if (output.size() != sentence.getUnits().size()) {
+			throw new JNETException("Wrong number of labels predicted.");
+		}
+		
+		// now add the label to the unit object
+		// and write in IOB ArrayList
+		for (int j = 0; j < sentence.getUnits().size(); j++) {
+			Unit unit = sentence.get(j);
+			unit.setLabel((String) output.get(j));
+		}
+		
+		return sentence.getUnits();
+	}
+	
+	
 	/**
 	 * predict the entity labels by means of a previously learned model.
 	 * 
@@ -337,6 +373,8 @@ public class NETagger {
 		this.model = fsm.getModel();
 		this.featureConfig = fsm.getFeatureConfig();
 		this.trained = true;
+		ois.close();
+		
 	}
 
 	/**
@@ -397,11 +435,13 @@ public class NETagger {
 						+ "_feat_unit");
 				if (!features[position].equals(featureConfig
 						.getProperty("gap_character"))) {
+					//System.out.println(featureName+": "+features[position]);
 					metas.put(featureName, features[position]);
 				}
 			}
 
 			unit = new Unit(0, 0, word, label, metas);
+			//System.out.println(metas.toString());
 			units.add(unit);
 		}
 		return new Sentence(units);

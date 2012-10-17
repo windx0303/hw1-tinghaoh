@@ -75,7 +75,7 @@ public class SimpleRunCPE extends Thread {
     // instantiate CPE
     System.out.println("Instantiating CPE");
     mCPE = UIMAFramework.produceCollectionProcessingEngine(cpeDesc);
-    System.out.println("GG");
+    //System.out.println("GG");
     // Create and register a Status Callback Listener
     mCPE.addStatusCallbackListener(new StatusCallbackListenerImpl());
 
