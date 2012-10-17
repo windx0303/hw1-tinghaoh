@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -190,7 +192,7 @@ public class NETagger {
 		Instance inst = new Instance(sentence, "", "", "", myPipe);
 		Sequence input = (Sequence) inst.getData();
 		Sequence output = model.viterbiPath(input).output();
-
+		
 		ArrayList<Unit> units = sentence.getUnits();
 
 		if (output.size() != sentence.getUnits().size()) {

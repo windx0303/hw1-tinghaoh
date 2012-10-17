@@ -64,7 +64,7 @@ public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 				ArrayList<Unit> nowTokenList = nowTagger.getTokeList(nowText);
 				Sentence nowJnetSent = new Sentence(nowTokenList);
 				ArrayList<Unit> result = nowNETagger.getIOBList(nowJnetSent);
-				annotateNamedEntity(result, nowJCas, nowSent.getSentId());
+				//annotateNamedEntity(result, nowJCas, nowSent.getSentId());
 				ArrayList<Unit> lingPiptResult = getLingPiptResult(nowText);
 				annotateLingPipeNE(lingPiptResult, nowJCas, nowSent.getSentId());
 				/*for(int i=0;i<result.size();i++){
@@ -90,6 +90,9 @@ public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 
 	}
 	
+	/*
+	 * Annotate the Lingpipe output into JCas "NamedEntity"
+	 */
 	public void annotateLingPipeNE(ArrayList<Unit> lingPiptResult, JCas nowJCas, String sentId){
 		
 		for(int i=0;i<lingPiptResult.size();i++){
