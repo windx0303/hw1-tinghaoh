@@ -3,13 +3,17 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.cmu.lti.11791.f12.hw1</groupId>
   <artifactId>hw1-tinghaoh</artifactId>
-  <version>0.0.7</version>
-  <repositories>
+  <version>0.0.8</version>
+  <distributionManagement>
     <repository>
-      <id>oaqa</id>
-      <url>http://mu.lti.cs.cmu.edu:8081/nexus/content/groups/course</url>
+      <id>deployment</id>
+      <url>http://mu.lti.cs.cmu.edu:8081/nexus/content/repositories/course-releases</url>
     </repository>
-  </repositories>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <url>http://mu.lti.cs.cmu.edu:8081/nexus/content/repositories/course-snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
   <build>
     <plugins>
       <plugin>
