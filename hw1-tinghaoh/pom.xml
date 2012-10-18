@@ -4,6 +4,12 @@
   <groupId>edu.cmu.lti.11791.f12.hw1</groupId>
   <artifactId>hw1-tinghaoh</artifactId>
   <version>0.0.18-SNAPSHOT</version>
+  <repositories>
+  <repository>
+     <id>oaqa</id>
+     <url>http://mu.lti.cs.cmu.edu:8081/nexus/content/groups/course</url>
+    </repository>
+  </repositories>
   <distributionManagement>
     <repository>
       <id>deployment</id>
