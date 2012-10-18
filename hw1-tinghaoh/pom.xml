@@ -105,4 +105,8 @@
       <version>1.3.2</version>
     </dependency>
   </dependencies>
+  <scm>
+  	<connection>scm:git:git@github.com:windx0303/hw1-tinghaoh.git</connection>
+  	<developerConnection>scm:git:git@github.com:windx0303/hw1-tinghaoh.git</developerConnection>
+  </scm>
 </project>
