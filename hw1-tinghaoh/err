@@ -1,0 +1,63 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for edu.cmu.lti.11791.f12.hw1:hw1-tinghaoh:jar:0.0.1
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 25, column 15
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building hw1-tinghaoh 0.0.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-release-plugin:2.2.1:prepare (default-cli) @ hw1-tinghaoh ---
+[INFO] Resuming release from phase 'run-preparation-goals'
+[INFO] Executing goals 'clean verify'...
+[WARNING] Maven will be executed in interactive mode, but no input stream has been configured for this MavenInvoker instance.
+[INFO] [INFO] Scanning for projects...
+[INFO] [WARNING] 
+[INFO] [WARNING] Some problems were encountered while building the effective model for edu.cmu.lti.11791.f12.hw1:hw1-tinghaoh:jar:0.0.1
+[INFO] [WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 25, column 15
+[INFO] [WARNING] 
+[INFO] [WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[INFO] [WARNING] 
+[INFO] [WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[INFO] [WARNING] 
+[INFO] [INFO]                                                                         
+[INFO] [INFO] ------------------------------------------------------------------------
+[INFO] [INFO] Building hw1-tinghaoh 0.0.1
+[INFO] [INFO] ------------------------------------------------------------------------
+[INFO] Downloading: http://mu.lti.cs.cmu.edu:8081/nexus/content/groups/course/1/1/1/1-1.jar
+[INFO] 
+[INFO] Downloading: http://repo.maven.apache.org/maven2/1/1/1/1-1.jar
+[INFO] 
+[INFO] [INFO] ------------------------------------------------------------------------
+[INFO] [INFO] BUILD FAILURE
+[INFO] [INFO] ------------------------------------------------------------------------
+[INFO] [INFO] Total time: 4.015s
+[INFO] [INFO] Finished at: Thu Oct 18 08:48:14 EDT 2012
+[INFO] [INFO] Final Memory: 4M/15M
+[INFO] [INFO] ------------------------------------------------------------------------
+[INFO] [ERROR] Failed to execute goal on project hw1-tinghaoh: Could not resolve dependencies for project edu.cmu.lti.11791.f12.hw1:hw1-tinghaoh:jar:0.0.1: Could not find artifact 1:1:jar:1 in oaqa (http://mu.lti.cs.cmu.edu:8081/nexus/content/groups/course) -> [Help 1]
+[INFO] [ERROR] 
+[INFO] [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[INFO] [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[INFO] [ERROR] 
+[INFO] [ERROR] For more information about the errors and possible solutions, please read the following articles:
+[INFO] [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.969s
+[INFO] Finished at: Thu Oct 18 08:48:14 EDT 2012
+[INFO] Final Memory: 4M/15M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-release-plugin:2.2.1:prepare (default-cli) on project hw1-tinghaoh: Maven execution failed, exit code: '1' -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
