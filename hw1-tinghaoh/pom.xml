@@ -50,6 +50,21 @@
   </build>
   <dependencies>
     <dependency>
+      <groupId>lingpipe</groupId>
+      <artifactId>lingpipe</artifactId>
+      <version>1</version>
+    </dependency>
+    <dependency>
+      <groupId>uea.stemmer</groupId>
+      <artifactId>uea.stemmer</artifactId>
+      <version>1</version>
+    </dependency>
+    <dependency>
+      <groupId>edu.umass.mallet</groupId>
+      <artifactId>edu.umass.mallet</artifactId>
+      <version>1</version>
+    </dependency>
+    <dependency>
       <groupId>org.apache.uima</groupId>
       <artifactId>uimaj-core</artifactId>
       <version>2.4.0</version>
