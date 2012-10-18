@@ -32,14 +32,30 @@ public class PosTagNamedEntityRecognizer {
   public ArrayList<Unit> getTokeList(String nowSent){
 	  
 	  ArrayList<Unit> result = new ArrayList<Unit>();
-	  Annotation nowSentAnnotation = new Annotation(nowSent);
+	  
+	  String[] tokAtrray = nowSent.trim().split("[\\s]+");
+	  
+	  int doneIndex = 0;
+	  for(int i=0;i<tokAtrray.length;i++){
+		  String nowToken = tokAtrray[i];
+		  int nowBegin = nowSent.indexOf(nowToken, doneIndex);
+		  int nowEnd = nowBegin + nowToken.length();
+		  String nowLabel = "X";
+	      String nowWord = nowToken;
+	      Unit nowUnit = new Unit(nowBegin, nowEnd, nowWord, nowLabel);
+	      result.add(nowUnit);
+		  doneIndex = nowEnd;
+	  }
+	  
+	  /*Annotation nowSentAnnotation = new Annotation(nowSent);
 	  pipeline.annotate(nowSentAnnotation);
 	  for (CoreLabel token : nowSentAnnotation.get(TokensAnnotation.class)) {
 		  String nowLabel = "X";
 	      String nowWord = token.get(ValueAnnotation.class);
 	      Unit nowUnit = new Unit(token.beginPosition(), token.endPosition(), nowWord, nowLabel);
 	      result.add(nowUnit);
-	  }
+	  }*/
+	  
 	  return result;
 	  
   }

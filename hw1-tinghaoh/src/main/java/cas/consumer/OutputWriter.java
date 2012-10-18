@@ -22,6 +22,10 @@ import com.aliasi.chunk.Chunk;
 
 import util.*;
 
+/**
+ * a Cas consumer which take the final JCas and output all NamedEntity annotations into output.  
+ * The duplicate span, i.e., the span with same begin and end, will be ignored.
+ */
 public class OutputWriter extends CasConsumer_ImplBase {
 	
 	private static String encoding = "UTF-8";
@@ -29,7 +33,12 @@ public class OutputWriter extends CasConsumer_ImplBase {
 	private File outputFile;
 	private BufferedWriter fOut;
 	private Hashtable<Integer, Integer> indexMap;
-	   
+	
+	/*
+	 * new the BufferedWriter 
+	 * (non-Javadoc)
+	 * @see org.apache.uima.collection.CasConsumer_ImplBase#initialize()
+	 */
 	public void initialize() throws ResourceInitializationException {
 		outputFile = new File(((String)getConfigParameterValue("outputFile")).trim());
 		indexMap = new Hashtable<Integer, Integer>();
@@ -44,6 +53,11 @@ public class OutputWriter extends CasConsumer_ImplBase {
 		}
 	}
 	
+	/*
+	 * take the JCas and output to file
+	 * (non-Javadoc)
+	 * @see org.apache.uima.collection.base_cpm.CasObjectProcessor#processCas(org.apache.uima.cas.CAS)
+	 */
 	@Override
 	public void processCas(CAS aCAS) throws ResourceProcessException {
 		//P00027739T0000|0 28|Serum gamma glutamyltransferase
@@ -107,6 +121,9 @@ public class OutputWriter extends CasConsumer_ImplBase {
 		return false;
 	}
 	
+	/*
+	 * build the map which maps the original Java index to the required output index 
+	 */
 	private Hashtable<Integer, Integer> buildIndexMap(JCas jcas){
 		Hashtable<Integer, Integer> result = new Hashtable<Integer, Integer>();
 		String nowText = jcas.getDocumentText();
@@ -121,6 +138,11 @@ public class OutputWriter extends CasConsumer_ImplBase {
 		return result;
 	}
 	
+	/*
+	 * finalize the component, close the BufferedWriter
+	 * (non-Javadoc)
+	 * @see org.apache.uima.collection.CasConsumer_ImplBase#collectionProcessComplete(org.apache.uima.util.ProcessTrace)
+	 */
 	public void collectionProcessComplete(ProcessTrace aTrace)
             throws ResourceProcessException,
                    IOException{

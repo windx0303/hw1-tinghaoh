@@ -34,6 +34,11 @@ import edu.umass.cs.mallet.base.types.Sequence;
 import util.*;
 import zi.*;
 
+/*
+ * an annotator takes the input JCas (contains only one sentence),
+ * and annotate the named entities.
+ * Using LingPipe and Julie Lab NER, estimated F1-score is about 0.8
+ */
 public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 	
 	public static File configFile = new File("src/main/resources/defaultFeatureConf.conf");
@@ -45,6 +50,11 @@ public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 	
 	NETagger nowNETagger;
 	
+	/*
+	 * Run the two annotators
+	 * (non-Javadoc)
+	 * @see org.apache.uima.analysis_component.JCasAnnotator_ImplBase#process(org.apache.uima.jcas.JCas)
+	 */
 	@Override
 	public void process(JCas nowJCas) throws AnalysisEngineProcessException {
 		// TODO Auto-generated method stub
@@ -64,7 +74,7 @@ public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 				ArrayList<Unit> nowTokenList = nowTagger.getTokeList(nowText);
 				Sentence nowJnetSent = new Sentence(nowTokenList);
 				ArrayList<Unit> result = nowNETagger.getIOBList(nowJnetSent);
-				//annotateNamedEntity(result, nowJCas, nowSent.getSentId());
+				annotateNamedEntity(result, nowJCas, nowSent.getSentId());
 				ArrayList<Unit> lingPiptResult = getLingPiptResult(nowText);
 				annotateLingPipeNE(lingPiptResult, nowJCas, nowSent.getSentId());
 				/*for(int i=0;i<result.size();i++){
@@ -112,6 +122,9 @@ public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 		
 	}
 	
+	/*
+	 * Get the LingPipe output span
+	 */
 	public ArrayList<Unit> getLingPiptResult(String nowText){
 		
 		ArrayList<Unit> result = new ArrayList<Unit>();
@@ -130,6 +143,11 @@ public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 		
 	}
 	
+	/*
+	 * new the NETagger (for Julie) and chunker (for LingPipe)
+	 * (non-Javadoc)
+	 * @see org.apache.uima.analysis_component.AnalysisComponent_ImplBase#initialize(org.apache.uima.UimaContext)
+	 */
 	public void initialize(UimaContext aContext) throws ResourceInitializationException{
 		
 		super.initialize(aContext);
@@ -147,12 +165,9 @@ public class NamedEntityAnnotator extends JCasAnnotator_ImplBase {
 		} 
 	}
 	
-	/*public void initialize() throws ResourceInitializationException {
-		
-		
-		
-	}*/
-	
+	/*
+	 * annotator for Julie tools
+	 */
 	private void annotateNamedEntity(ArrayList<Unit> result, JCas nowJCas, String sentId){
 		boolean inNE = false;
 		ArrayList<Integer> beginList = new  ArrayList<Integer>();

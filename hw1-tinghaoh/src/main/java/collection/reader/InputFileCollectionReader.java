@@ -12,6 +12,10 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
 
+/*
+ * a collection reader takes files, and makes each single line into a JCas
+ * annotate the Sentence label also  
+ */
 public class InputFileCollectionReader extends CollectionReader_ImplBase {
 	
 	private static String encoding = "UTF-8";
@@ -19,7 +23,12 @@ public class InputFileCollectionReader extends CollectionReader_ImplBase {
 	private String lineBuffer;
 	private BufferedReader in;
 	private File inputFile;
-	   
+	
+	/*
+	 * Open the BufferedReader
+	 * (non-Javadoc)
+	 * @see org.apache.uima.collection.CollectionReader_ImplBase#initialize()
+	 */
 	public void initialize() throws ResourceInitializationException {
 		
 		inputFile = new File(((String)getConfigParameterValue("inputFile")).trim());
