@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.cmu.lti.11791.f12.hw1</groupId>
   <artifactId>hw1-tinghaoh</artifactId>
-  <version>0.0.27</version>
+  <version>SNAPSHOT-0.0.27</version>
   <repositories>
   <repository>
      <id>oaqa</id>
@@ -50,18 +50,28 @@
   </build>
   <dependencies>
     <dependency>
-      <groupId>lingpipe</groupId>
+      <groupId>com.aliasi</groupId>
       <artifactId>lingpipe</artifactId>
+      <version>4.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>UEAstemmer</groupId>
+      <artifactId>UEAstemmer</artifactId>
       <version>1</version>
     </dependency>
     <dependency>
-      <groupId>uea.stemmer</groupId>
-      <artifactId>uea.stemmer</artifactId>
+      <groupId>mallet</groupId>
+      <artifactId>mallet-deps</artifactId>
       <version>1</version>
     </dependency>
     <dependency>
-      <groupId>edu.umass.mallet</groupId>
-      <artifactId>edu.umass.mallet</artifactId>
+      <groupId>mallet</groupId>
+      <artifactId>mallet-troveless-0.4</artifactId>
+      <version>0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>mallet</groupId>
+      <artifactId>mallet-optimized</artifactId>
       <version>1</version>
     </dependency>
     <dependency>
